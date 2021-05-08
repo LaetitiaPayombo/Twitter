@@ -1,4 +1,5 @@
-﻿using System;
+﻿using TwitterAdmin.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,6 +21,7 @@ namespace TwitterAdmin.Views
         public CommentairesWindow()
         {
             InitializeComponent();
+            DataContext = new CommentaireViewModel();
         }
     }
 }

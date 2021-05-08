@@ -1,4 +1,5 @@
-﻿using System;
+﻿using TwitterAdmin.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -13,13 +14,14 @@ using System.Windows.Shapes;
 namespace TwitterAdmin.Views
 {
     /// <summary>
-    /// Logique d'interaction pour AccueilWindow.xaml
+    /// Logique d'interaction pour ForumWindow.xaml
     /// </summary>
-    public partial class AccueilWindow : Window
+    public partial class ForumWindow : Window
     {
-        public AccueilWindow()
+        public ForumWindow()
         {
             InitializeComponent();
+            
         }
     }
 }
