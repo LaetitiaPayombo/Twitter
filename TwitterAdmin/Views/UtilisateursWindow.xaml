@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TwitterAdmin"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
- 
+        Title="Gestionnaire" Height="450" Width="900">
+    
+    <Grid ShowGridLines="True" Background="LightGray">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="600"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical">
+            <GroupBox Header="Choix du gestionnaire" x:Name="ChoixGestionnaire" Margin="5" Padding="5">
+                <StackPanel>
+                    <Button x:Name="Btn_GestionUtilisateur" Content="Gestionnaire des Utilisateurs" Margin="5" Padding="5"/>
+                    <Button x:Name="Btn_GestionThematique" Content="Gestionnaire des Thématiques" Margin="5" Padding="5"/>
+                    <Button x:Name="Btn_GestionCommentaire" Content="Gestionnaire des Commentaires" Margin="5" Padding="5"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+        
     </Grid>
 </Window>
