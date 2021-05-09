@@ -24,5 +24,40 @@ namespace TwitterAdmin
         {
             InitializeComponent();
         }
+
+        private void Btn_GestionUtilisateur_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_GestionThematique_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_GestionCommentaire_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Rechercher_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Modifier_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Supprimer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Ajouter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -18,9 +18,9 @@
         <StackPanel Orientation="Vertical">
             <GroupBox Header="Choix du gestionnaire" x:Name="ChoixGestionnaire" Margin="5" Padding="5">
                 <StackPanel>
-                    <Button x:Name="Btn_GestionUtilisateur" Content="Gestionnaire des Utilisateurs" Margin="5" Padding="5"/>
-                    <Button x:Name="Btn_GestionThematique" Content="Gestionnaire des Thématiques" Margin="5" Padding="5"/>
-                    <Button x:Name="Btn_GestionCommentaire" Content="Gestionnaire des Commentaires" Margin="5" Padding="5"/>
+                    <Button x:Name="Btn_GestionUtilisateur" Content="Gestionnaire des Utilisateurs" Margin="5" Padding="5" Click="Btn_GestionUtilisateur_Click"/>
+                    <Button x:Name="Btn_GestionThematique" Content="Gestionnaire des Thématiques" Margin="5" Padding="5" Click="Btn_GestionThematique_Click"/>
+                    <Button x:Name="Btn_GestionCommentaire" Content="Gestionnaire des Commentaires" Margin="5" Padding="5" Click="Btn_GestionCommentaire_Click"/>
                 </StackPanel>
             </GroupBox>
         </StackPanel>
@@ -29,7 +29,7 @@
             <!--Outils Rechercher-->
             <StackPanel Orientation="Horizontal" Width="500" Margin="0 10 0 10">
                 <TextBox Width="250"/>
-                <Button x:Name="Rechercher" Content="Rechercher" Margin="50 0" Padding="5"/>
+                <Button x:Name="Rechercher" Content="Rechercher" Margin="50 0" Padding="5" Click="Rechercher_Click"/>
             </StackPanel>
             <!--Affichage des Listes-->
             <ListView x:Name="ListeViewContact" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="300">
@@ -38,15 +38,16 @@
                         <GridViewColumn Width="100" Header="Id" DisplayMemberBinding="{Binding Id}"/>
                         <GridViewColumn Width="150" Header="Pseudo" DisplayMemberBinding="{Binding Pseudo}"/>
                         <GridViewColumn Width="200" Header="Mail" DisplayMemberBinding="{Binding Mail}"/>
+                        <!--Le mot de passe est il nécessaire ? Il n'existe pas dans les tables de la BDD-->
                         <GridViewColumn Width="150" Header="Mot de passe" DisplayMemberBinding="{Binding MotDePasse}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
             <!--Boutons de Mod/Supp/Ajout-->
             <StackPanel Orientation="Horizontal" Width="500" Margin="0 10 0 0">
-                <Button x:Name="Modifier" Content="Modifier" Margin="50 0" Padding="10 5"/>
-                <Button x:Name="Supprimer" Content="Supprimer" Margin="50 0" Padding="10 5"/>
-                <Button x:Name="Ajouter" Content="Ajouter" Margin="50 0" Padding="10 5"/>
+                <Button x:Name="Modifier" Content="Modifier" Margin="50 0" Padding="10 5" Click="Modifier_Click"/>
+                <Button x:Name="Supprimer" Content="Supprimer" Margin="50 0" Padding="10 5" Click="Supprimer_Click"/>
+                <Button x:Name="Ajouter" Content="Ajouter" Margin="50 0" Padding="10 5" Click="Ajouter_Click"/>
             </StackPanel>
 
         </StackPanel>
