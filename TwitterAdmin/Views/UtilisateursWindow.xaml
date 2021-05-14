@@ -1,12 +1,42 @@
-﻿<Window x:Class="TwitterAdmin.MainWindow"
+﻿<Window x:Class="TwitterAdmin.Views.UtilisateursWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TwitterAdmin"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
-</Window>
+        Title="Gestion utilisateur" Height="353" Width="518">
+        
+    <StackPanel>
+        <GroupBox Header="Formulaire utilisateur">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Pseudo : " MinWidth="100"></Label>
+                    <TextBox MinWidth="400" Text="{Binding Pseudo}"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Email : " MinWidth="100"></Label>
+                    <TextBox MinWidth="400" Text="{Binding Email}"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Avatar : " MinWidth="100"></Label>
+                    <TextBox MinWidth="400" Text="{Binding Avatar}"></TextBox>
+                </StackPanel>
+                <Button Content="{Binding ContentButton}" Command="{Binding ConfirmCommand}"></Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Liste Utilisateurs">
+            <StackPanel>
+                <ListView MinHeight="180" SelectedItem="{Binding Utilisateur}" ItemsSource="{Binding Utilisateurs}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Pseudo" Width="170" DisplayMemberBinding="{Binding Pseudo}"></GridViewColumn>
+                            <GridViewColumn Header="Email" Width="170" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
+                            <GridViewColumn Header="Avatar" Width="170" DisplayMemberBinding="{Binding Avatar}"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+ </Window>

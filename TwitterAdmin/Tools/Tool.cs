@@ -15,10 +15,10 @@ namespace TwitterAdmin.Tools
 
        
 
-        public static bool IsEmail(string phone)
+        public static bool IsEmail(string email)
         {
-            string pattern = @"^0([1-9]{1})(\.|\s|-)?((\d){2}(\.|\s|-)?){3}(\d{2})$";
-            return Regex.IsMatch(phone, pattern);
+            string pattern = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
+            return Regex.IsMatch(email, pattern);
         }
     }
 }

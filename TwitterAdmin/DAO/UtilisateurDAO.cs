@@ -12,12 +12,13 @@ namespace TwitterAdmin.DAO
 
         public override bool Create(Utilisateur element)
         {
-            request = "INSERT INTO Utilisateur(pseudo, email) " +
-                "OUTPUT INSERTED.ID values (@pseudo, @email)";
+            request = "INSERT INTO Utilisateur(pseudo, email, avatar) " +
+                "OUTPUT INSERTED.ID values (@pseudo, @email, @avatar)";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@pseudo", element.Pseudo));
             command.Parameters.Add(new SqlParameter("@email", element.Email));
+            command.Parameters.Add(new SqlParameter("@avatar", element.Avatar));
             connection.Open();
             element.Id = (int)command.ExecuteScalar();
             command.Dispose();
@@ -39,7 +40,7 @@ namespace TwitterAdmin.DAO
         public override Utilisateur Find(int index)
         {
             Utilisateur utilisateur = null;
-            request = "SELECT id, pseudo, email from Utilisateur where id=@id";
+            request = "SELECT id, pseudo, email, avatar from Utilisateur where id=@id";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@id", index));
@@ -81,7 +82,7 @@ namespace TwitterAdmin.DAO
         public override List<Utilisateur> FindAll()
         {
             List<Utilisateur> utilisateurs = new List<Utilisateur>();
-            request = "SELECT id, pseudo, email from Utilisateur";
+            request = "SELECT id, pseudo, email, avatar from Utilisateur";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             connection.Open();
@@ -93,6 +94,7 @@ namespace TwitterAdmin.DAO
                     Id = reader.GetInt32(0),
                     Pseudo = reader.GetString(1),
                     Email = reader.GetString(2),
+                    Avatar = reader.GetString(3),
 
                 };
                 utilisateurs.Add(c);
@@ -106,12 +108,13 @@ namespace TwitterAdmin.DAO
 
         public override bool Update(Utilisateur element)
         {
-            request = "UPDATE Utilisateur set pseudo = @pseudo, email = @email where id=@id";
+            request = "UPDATE Utilisateur set pseudo = @pseudo, email = @email, avatar = @avatar where id=@id";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@pseudo", element.Pseudo));
             command.Parameters.Add(new SqlParameter("@email", element.Email));
             command.Parameters.Add(new SqlParameter("@id", element.Id));
+            command.Parameters.Add(new SqlParameter("@avatar", element.Avatar));
             connection.Open();
             int nbRow = command.ExecuteNonQuery();
             command.Dispose();

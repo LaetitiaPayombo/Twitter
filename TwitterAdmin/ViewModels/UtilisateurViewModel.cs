@@ -20,6 +20,8 @@ namespace TwitterAdmin.ViewModels
 
         public string Email { get => Utilisateur.Email; set => Utilisateur.Email = value; }
 
+        public string Avatar { get => Utilisateur.Avatar; set => Utilisateur.Avatar = value; }
+
         public ICommand ConfirmCommand { get; set; }
 
         public ObservableCollection<Utilisateur> Utilisateurs { get; set; }
@@ -35,6 +37,7 @@ namespace TwitterAdmin.ViewModels
                 {
                     RaisePropertyChanged("Pseudo");
                     RaisePropertyChanged("Email");
+                    RaisePropertyChanged("Avatar");
                     RaisePropertyChanged("ContentButton");
                 }
             }
@@ -43,6 +46,38 @@ namespace TwitterAdmin.ViewModels
         public string ContentButton { get => Utilisateur.Id > 0 ? "Modifier" : "Ajouter"; }
 
 
+        public UtilisateurViewModel()
+        {
+            Utilisateur = new Utilisateur();
+            ConfirmCommand = new RelayCommand(ActionConfirmCommand);
+            Utilisateurs = new ObservableCollection<Utilisateur>(Utilisateur.GetAll());
+        }
 
+        private void ActionConfirmCommand()
+        {
+            if (Utilisateur.Id > 0)
+            {
+                if (Utilisateur.Update())
+                {
+                    MessageBox.Show("Utilisateur mis à jour avec l'id " + Utilisateur.Id);
+                    Utilisateurs = new ObservableCollection<Utilisateur>(Utilisateur.GetAll());
+                    RaisePropertyChanged("Utilisateurs");
+                    Utilisateur = new Utilisateur();
+                }
+            }
+            else
+            {
+                if (Utilisateur.Save())
+                {
+                    MessageBox.Show("Utilisateur ajouté avec l'id " + Utilisateur.Id);
+                    Utilisateurs.Add(Utilisateur);
+                    Utilisateur = new Utilisateur();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur ajout utilisateur");
+                }
+            }
+        }
     }
 }
