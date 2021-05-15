@@ -14,7 +14,7 @@ namespace TwitterAdmin.Models
         private DateTime dateCommentaire;
         private string com;
         private string image;
-        private static int compteur = 0;
+       
 
         public int Id { get => id; set => id = value; }
         
@@ -22,10 +22,16 @@ namespace TwitterAdmin.Models
         public string Image { get => image; set => image = value; }
         public DateTime DateCommentaire { get => dateCommentaire; set => dateCommentaire = value; }
 
-        
+
+        public Commentaire()
+        {
+           DateCommentaire = DateTime.Now;
+           
+        }
 
         public bool Save()
         {
+           
             AbstractDAO<Commentaire> dao = new CommentaireDAO();
             return dao.Create(this);
         }

@@ -80,7 +80,7 @@ namespace TwitterAdmin.DAO
         public override List<Thematique> FindAll()
         {
             List<Thematique> thematiques = new List<Thematique>();
-            request = "SELECT id, sujet from thematique  where id=@id";
+            request = "SELECT id, sujet from thematique";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             connection.Open();

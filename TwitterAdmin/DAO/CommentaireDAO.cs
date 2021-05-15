@@ -21,10 +21,10 @@ namespace TwitterAdmin.DAO
             command.Parameters.Add(new SqlParameter("@com", element.Com));
             command.Parameters.Add(new SqlParameter("@image", element.Image));
             connection.Open();
-            int ajoutLigne = command.ExecuteNonQuery();
+            element.Id = (int)command.ExecuteScalar();
             command.Dispose();
             connection.Close();
-            return ajoutLigne == 1;
+            return element.Id > 0;
         }
         public override bool Delete(Commentaire element)
         {
