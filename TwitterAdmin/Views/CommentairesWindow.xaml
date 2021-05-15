@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TwitterAdmin.Views"
         mc:Ignorable="d"
-        Title="CommentairesWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Gestion commentaires" Height="353" Width="518">
+
+    <StackPanel>
+        <GroupBox Header="Formulaire commentaires">
+            <StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Com : " MinWidth="100"></Label>
+                    <TextBox MinWidth="400" Text="{Binding Com}"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Image : " MinWidth="100"></Label>
+                    <TextBox MinWidth="400" Text="{Binding Image}"></TextBox>
+                </StackPanel>
+                <Button Content="{Binding ContentButtonCom}" Command="{Binding ConfirmCommandCom}"></Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Liste Commentaires">
+            <StackPanel>
+                <ListView MinHeight="180" SelectedItem="{Binding Commentaire}" ItemsSource="{Binding Commentaires}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="DateCom" Width="170" DisplayMemberBinding="{Binding DateCom}"></GridViewColumn>
+                            <GridViewColumn Header="Com" Width="170" DisplayMemberBinding="{Binding Com}"></GridViewColumn>
+                            <GridViewColumn Header="Image" Width="170" DisplayMemberBinding="{Binding Image}"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
 </Window>

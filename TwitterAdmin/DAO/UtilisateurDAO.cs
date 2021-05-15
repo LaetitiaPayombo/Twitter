@@ -89,7 +89,7 @@ namespace TwitterAdmin.DAO
             reader = command.ExecuteReader();
             while (reader.Read())
             {
-                Utilisateur c = new Utilisateur
+                Utilisateur u = new Utilisateur
                 {
                     Id = reader.GetInt32(0),
                     Pseudo = reader.GetString(1),
@@ -97,7 +97,7 @@ namespace TwitterAdmin.DAO
                     Avatar = reader.GetString(3),
 
                 };
-                utilisateurs.Add(c);
+                utilisateurs.Add(u);
             }
             reader.Close();
             command.Dispose();

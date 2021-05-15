@@ -22,7 +22,7 @@ CREATE TABLE [dbo].[commentaire]
 (
 	[id] INT IDENTITY (1, 1) NOT NULL,
     [date_commentaire] DATETIME     NOT NULL,
-    [commentaire]      VARCHAR (500) NOT NULL,
+    [com]      VARCHAR (500) NOT NULL,
     [image] VARCHAR(MAX) NOT NULL,
     PRIMARY KEY CLUSTERED ([id] ASC)
 )
