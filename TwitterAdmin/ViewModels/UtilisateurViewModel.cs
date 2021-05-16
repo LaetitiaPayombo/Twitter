@@ -14,8 +14,8 @@ namespace TwitterAdmin.ViewModels
     {
 
         private Utilisateur utilisateur;
-        private string contentButton;
 
+        private string contentButton;
         public string Pseudo { get => Utilisateur.Pseudo; set => Utilisateur.Pseudo = value; }
 
         public string Email { get => Utilisateur.Email; set => Utilisateur.Email = value; }
@@ -23,6 +23,8 @@ namespace TwitterAdmin.ViewModels
         public string Avatar { get => Utilisateur.Avatar; set => Utilisateur.Avatar = value; }
 
         public ICommand ConfirmCommand { get; set; }
+
+       
 
         public ObservableCollection<Utilisateur> Utilisateurs { get; set; }
 
@@ -39,6 +41,7 @@ namespace TwitterAdmin.ViewModels
                     RaisePropertyChanged("Email");
                     RaisePropertyChanged("Avatar");
                     RaisePropertyChanged("ContentButton");
+
                 }
             }
         }
@@ -72,6 +75,7 @@ namespace TwitterAdmin.ViewModels
                     MessageBox.Show("Utilisateur ajouté avec l'id " + Utilisateur.Id);
                     Utilisateurs.Add(Utilisateur);
                     Utilisateur = new Utilisateur();
+                    //Clear();
                 }
                 else
                 {
@@ -79,5 +83,14 @@ namespace TwitterAdmin.ViewModels
                 }
             }
         }
+
+        //private void Clear()
+        //{
+        //    Utilisateur = new Utilisateur();
+        //    RaisePropertyChanged("Pseudo");
+        //    RaisePropertyChanged("Email");
+        //    RaisePropertyChanged("Avatar");
+        //}
+
     }
 }

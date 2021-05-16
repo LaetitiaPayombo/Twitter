@@ -3,12 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TwitterAdmin"
-        mc:Ignorable="d"
-        Title="Gestion utilisateur" Height="353" Width="518">
-        
+        xmlns:local="clr-namespace:TwitterAdmin.Views"
+         mc:Ignorable="d" 
+         Title="Gestion utilisateur" Height="353" Width="518">
     <StackPanel>
-        <GroupBox Header="Formulaire utilisateur">
+
+
+        <GroupBox Header="Création utilisateur">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Pseudo : " MinWidth="100"></Label>
@@ -38,5 +39,7 @@
                 </ListView>
             </StackPanel>
         </GroupBox>
+
+
     </StackPanel>
- </Window>
+</Window>

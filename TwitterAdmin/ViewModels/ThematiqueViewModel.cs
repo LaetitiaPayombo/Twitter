@@ -14,7 +14,7 @@ namespace TwitterAdmin.ViewModels
     {
 
         private Thematique thematique;
-        private string contentButtonThem;
+      
 
         public string Sujet { get => Thematique.Sujet; set => Thematique.Sujet = value; }
 
@@ -32,12 +32,12 @@ namespace TwitterAdmin.ViewModels
                 if (thematique != null)
                 {
                     RaisePropertyChanged("Sujet");
-                    RaisePropertyChanged("ContentButton");
+                    
                 }
             }
         }
 
-        public string ContentButtonThem { get => Thematique.Id > 0 ? "Modifier" : "Ajouter"; }
+        
 
         public ThematiqueViewModel()
         {

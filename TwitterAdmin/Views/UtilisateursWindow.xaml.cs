@@ -23,5 +23,7 @@ namespace TwitterAdmin.Views
             InitializeComponent();
             DataContext = new UtilisateurViewModel();
         }
+
+      
     }
 }
