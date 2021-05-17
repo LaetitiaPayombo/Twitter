@@ -1,0 +1,126 @@
+﻿<Window x:Class="ProjetFilRouge.UtilisateurWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjetFilRouge"
+        mc:Ignorable="d"
+        Title="UtilisateurWindow" Height="500" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    
+    <Grid ShowGridLines="True" Background="LightGray">
+        <!--Definition des colonnes de la fenêtre-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="600"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel VerticalAlignment="Stretch">
+
+            <Menu>
+                <MenuItem Header="Menu">
+                    <MenuItem Header="Gestionnaire des utilisateurs" x:Name="ChoixMenu_Utilisateur" Click="ChoixMenu_Utilisateur_Click"/>
+                    <MenuItem Header="Gestionnaire des thématiques" x:Name="ChoixMenu_Thematique" Click="ChoixMenu_Thematique_Click"/>
+                    <MenuItem Header="Gestionnaire des commentaires" x:Name="ChoixMenu_Commentaire" Click="ChoixMenu_Commentaire_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Retour à la page d'accueil" x:Name="ChoixMenu_Retour" Click="ChoixMenu_Retour_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Quitter"  x:Name="ChoixMenu_Quitter" Click="ChoixMenu_Quitter_Click"/>
+
+                </MenuItem>
+            </Menu>
+            
+            <!--GroupBox Champs nécessaires aux Ajout/modif-->
+        <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
+            <GroupBox x:Name="EntreesAdministrateur" Header="Ajout d'un utilisateur" Margin="5" Padding="5">
+                <StackPanel>
+                    
+                    <TextBlock Text="Pseudo :" Margin="0 5 0 0"/>
+                    <TextBox x:Name="ChampsPseudo_EntreesAdministrateur"/>
+                    <TextBlock Text="Email :" Margin="0 5 0 0"/>
+                    <TextBox x:Name="ChampsEmail_EntreesAdministrateur"/>
+
+                        <!--Boutons Ajout/Mod-->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5">
+                            <Button x:Name="Ajouter" Content="Ajouter" Click="Ajouter_Click" Margin="10 5 10 0" Padding="5 5 5 5"/>
+                            <Button x:Name="Modifier" Content="Modifier / Supprimer" Margin="10 5 10 0" Padding="5 5 5 5" Click="Modifier_Click" />
+                        </StackPanel>
+
+                </StackPanel>
+            </GroupBox>
+
+                <GroupBox x:Name="ModificationAdministrateur" Header="Modification/Suppression d'un utilisateur" Margin="5" Padding="5" Visibility="Collapsed">
+                    <StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center" Text="Id Utilisateur : " Margin="0 5"/>
+                            <TextBlock x:Name="IdMod" VerticalAlignment="Center" Margin="0 5"/>
+                        </StackPanel>
+
+                        <TextBlock Text="Pseudo :" Margin="0 5 0 0"/>
+                        <TextBox x:Name="ChampsPseudo_ModificationAdministrateur" TextChanged="TextChangedEventHandler"/>
+                        <TextBlock Text="Email :" Margin="0 5 0 0"/>
+                        <TextBox x:Name="ChampsEmail_ModificationAdministrateur" TextChanged="TextChangedEventHandler"/>
+
+                        <!--Boutons Mod/Supp-->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5">
+                            <Button x:Name="Modifier_ModificationAdministrateur" Content="Modifier" Margin="10 5 10 0" Padding="5 5 5 5" IsEnabled="False" Click="Modifier_ModificationAdministrateur_Click"/>
+                            <Button x:Name="Supprimer_ModificationAdministrateur" Content="Supprimer" Margin="10 5 10 0" Padding="5 5 5 5" Click="Supprimer_ModificationAdministrateur_Click" />
+                            <Button x:Name="Retour_ModificationAdministrateur" Content="Retour" Margin="10 5 10 0" Padding="5 5 5 5" Click="Retour_ModificationAdministrateur_Click" />
+                        </StackPanel>
+
+                    </StackPanel>
+                </GroupBox>
+            
+                <!--Outils Rechercher-->
+                <GroupBox x:Name="RechercherUtilisateur" Header="Recherche d'un utilisateur" Margin="5" Padding="5">
+                    <StackPanel>
+                        <TextBlock Text="Id :" Margin="0 5 0 0"/>
+                        <TextBox x:Name="ChampsId_RechercherUtilisateur"/>
+                        
+                        <TextBlock Text="Pseudo :" Margin="0 5 0 0"/>
+                        <TextBox x:Name="ChampsPseudo_RechercherUtilisateur"/>
+
+                        <TextBlock Text="Email :" Margin="0 5 0 0"/>
+                        <TextBox x:Name="ChampsEmail_RechercherUtilisateur"/>
+                        <Button x:Name="BtnRechercher_RechercherUtilisateur" Content="Rechercher" Margin="10 10 10 0" Padding="5 5 5 5" Width="75" Click="BtnRechercher_RechercherUtilisateur_Click"/>
+
+                        <StackPanel x:Name="RetourRecherche_RechercherUtilisateur" Visibility="Collapsed">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Id : "/>
+                                <TextBlock x:Name="RetourId_RechercherUtilisateur" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Pseudo : "/>
+                                <TextBlock x:Name="RetourPseudo_RechercherUtilisateur" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Email : "/>
+                                <TextBlock x:Name="RetourEmail_RechercherUtilisateur" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+
+
+                    </StackPanel>
+                </GroupBox>
+            
+        </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+
+            <!--Affichage des Listes-->
+            <ListView x:Name="ListeViewUtilisateur" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="450">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="100" Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Width="250" Header="Pseudo" DisplayMemberBinding="{Binding Pseudo}"/>
+                        <GridViewColumn Width="250" Header="Email" DisplayMemberBinding="{Binding Email}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+
+        </StackPanel>
+
+    </Grid>
+</Window>
