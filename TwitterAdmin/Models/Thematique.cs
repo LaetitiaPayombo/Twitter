@@ -31,7 +31,7 @@ namespace TwitterAdmin.Models
         }
 
 
-        public static Thematique GetContactById(int id)
+        public static Thematique GetThemById(int id)
 
         {
             AbstractDAO<Thematique> dao = new ThematiqueDAO();
@@ -54,7 +54,7 @@ namespace TwitterAdmin.Models
         }
 
 
-        public static List<Thematique> SearchUser(string search)
+        public static List<Thematique> SearchThem(string search)
         {
             AbstractDAO<Thematique> dao = new ThematiqueDAO();
             return dao.Find(t => t.Sujet.Contains(search));

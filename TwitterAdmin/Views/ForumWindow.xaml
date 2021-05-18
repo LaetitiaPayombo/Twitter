@@ -13,11 +13,12 @@
 
     <StackPanel>
         <Menu>
-            <MenuItem Header="Gestion Utilisateurs" Command="{Binding UtilisateursCommand}"/>
-            <MenuItem Header="Gestion Thématiques" Command="{Binding ThematiquesCommand}" />
-            <MenuItem Header="Gestion Commentaires" Command="{Binding CommentairesCommand}" />
+            <MenuItem Header="Gestion Utilisateurs" Command="{Binding UtilisateursCommand}"  />
+            <MenuItem Header="Gestion Thématiques" Command="{Binding ThematiquesCommand}"   /> 
+            <MenuItem Header="Gestion Commentaires" Command="{Binding CommentairesCommand}"   /> 
           
         </Menu>
+      
     </StackPanel>
 
 </Window>

@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TwitterAdmin.Views"
          mc:Ignorable="d" 
-         Title="Gestion utilisateur" Height="353" Width="518">
+       Title="Gestion utilisateur" Height="353" Width="518">
+
+    
+    
     <StackPanel>
 
 
@@ -42,4 +45,5 @@
 
 
     </StackPanel>
+  
 </Window>

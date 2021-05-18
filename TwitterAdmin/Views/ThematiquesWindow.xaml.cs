@@ -16,17 +16,14 @@ namespace TwitterAdmin.Views
     /// <summary>
     /// Logique d'interaction pour ThematiquesWindow.xaml
     /// </summary>
-    public partial class ThematiquesControl: UserControl
+    public partial class ThematiquesWindow: Window
     {
-        public ThematiquesControl()
+        public ThematiquesWindow()
         {
             InitializeComponent();
             DataContext = new ThematiqueViewModel();
         }
 
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }

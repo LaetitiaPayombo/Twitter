@@ -14,7 +14,8 @@ namespace TwitterAdmin.ViewModels
     {
 
         private Commentaire commentaire;
-        
+
+        private string contentButtonCom;
         public DateTime DateCommentaire { get => Commentaire.DateCommentaire; set => Commentaire.DateCommentaire = value; }
 
         public string Com { get => Commentaire.Com; set => Commentaire.Com = value; }
@@ -41,14 +42,15 @@ namespace TwitterAdmin.ViewModels
                     RaisePropertyChanged(" DateCommentaire");
                     RaisePropertyChanged("Com");
                     RaisePropertyChanged("Image");
-                   
+                    RaisePropertyChanged("ContentButtonCom");
+
                 }
             }
         }
 
 
-       
 
+        public string ContentButtonCom { get => Commentaire.Id > 0 ? "Modifier" : "Ajouter"; }
 
         public CommentaireViewModel()
         {

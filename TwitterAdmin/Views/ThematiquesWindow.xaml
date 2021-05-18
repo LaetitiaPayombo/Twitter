@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TwitterAdmin.Views"
         mc:Ignorable="d"
-        Title="Gestion des thèmes" Height="353" Width="518">
-
+       Title="Gestion des thèmes" Height="353" Width="518">
     <StackPanel>
         <GroupBox Header="Formulaire Thématique">
             <StackPanel>

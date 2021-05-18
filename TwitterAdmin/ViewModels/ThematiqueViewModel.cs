@@ -14,12 +14,13 @@ namespace TwitterAdmin.ViewModels
     {
 
         private Thematique thematique;
-      
+
+        private string contentButtonThem;
 
         public string Sujet { get => Thematique.Sujet; set => Thematique.Sujet = value; }
 
 
-        public ICommand ConfirmCommand { get; set; }
+        public ICommand ConfirmCommandThem { get; set; }
 
         public ObservableCollection<Thematique> Thematiques { get; set; }
 
@@ -32,17 +33,18 @@ namespace TwitterAdmin.ViewModels
                 if (thematique != null)
                 {
                     RaisePropertyChanged("Sujet");
-                    
+                    RaisePropertyChanged("ContentButtonThem");
+
                 }
             }
         }
 
-        
+        public string ContentButtonThem { get => Thematique.Id > 0 ? "Modifier" : "Ajouter"; }
 
         public ThematiqueViewModel()
         {
             Thematique = new Thematique();
-            ConfirmCommand = new RelayCommand(ActionConfirmCommandThem);
+            ConfirmCommandThem = new RelayCommand(ActionConfirmCommandThem);
             Thematiques = new ObservableCollection<Thematique>(Thematique.GetAll());
         }
 
@@ -54,7 +56,7 @@ namespace TwitterAdmin.ViewModels
                 {
                     MessageBox.Show("Thématique mis à jour avec l'id " + Thematique.Id);
                     Thematiques = new ObservableCollection<Thematique>(Thematique.GetAll());
-                    RaisePropertyChanged("Utilisateurs");
+                    RaisePropertyChanged("Thematiques");
                     Thematique = new Thematique();
                 }
             }

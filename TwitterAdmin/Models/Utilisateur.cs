@@ -33,7 +33,7 @@ namespace TwitterAdmin.Models
 
         }
 
-        public static Utilisateur GetContactById(int id)
+        public static Utilisateur GetUserById(int id)
 
         {
             AbstractDAO<Utilisateur> dao = new UtilisateurDAO();

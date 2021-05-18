@@ -17,7 +17,7 @@ namespace TwitterAdmin.DAO
                 "values (@date_commentaire, @com, @image)";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
-            command.Parameters.Add(new SqlParameter("@date_commentaire", element.Com));
+            command.Parameters.Add(new SqlParameter("@date_commentaire", element.DateCommentaire));
             command.Parameters.Add(new SqlParameter("@com", element.Com));
             command.Parameters.Add(new SqlParameter("@image", element.Image));
             connection.Open();
