@@ -1,0 +1,21 @@
+﻿@model Tweeto
+<div class="container">
+    <h1 class="row m-1">
+        <span class="col-9">@Model.Title</span>
+      
+    </h1>
+    <div class="row m-1 justify-content-center">
+        @foreach (Image i in Model.Images)
+        {
+            <img src="~/@i.Url" class="col-3" />
+        }
+    </div>
+    <div class="row m-1">
+        <span class="col">
+            @Model.Description
+        </span>
+    </div>
+    <div class="row m-1">
+        <a asp-controller="Utilisateur" asp-action="AddTweeto" asp-route-id="@Model.Id" class="btn btn-outline-dark">Ajouter au forum</a>
+    </div>
+</div>

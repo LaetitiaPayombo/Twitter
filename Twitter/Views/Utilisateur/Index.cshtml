@@ -1,0 +1,15 @@
+﻿@model Utilisateur
+<div class="container">
+    @if (Model != null)
+    {
+        @foreach (Tweeto t in Model.Tweetos)
+        {
+            <div class="row m-1 p-1 justify-content-center">
+                <img src="~/@t.Images[0].Url" class="col" />
+                <span class="col">@t.Title</span>
+                
+            </div>
+        }
+        
+    }
+</div>

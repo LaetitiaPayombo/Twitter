@@ -1,0 +1,6 @@
+﻿<aside>
+    @foreach (Classement c in ViewBag.Classements)
+    {
+        <a asp-action="Index" asp-controller="Classement" asp-route-id="@c.Id">@c.Title</a>
+    }
+</aside>

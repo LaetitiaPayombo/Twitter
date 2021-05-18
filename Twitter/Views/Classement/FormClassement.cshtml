@@ -1,0 +1,31 @@
+﻿@model Tweeto
+
+<h1>Ajouter un sujet</h1>
+
+@if (ViewBag.Message != null)
+{
+    <div class="row m-1 justify-content-center align-items-center">
+        <div class="col-6 alert alert-success p-1">
+            @ViewBag.message
+        </div>
+    </div>
+}
+@if (ViewBag.MessageError != null)
+{
+    <div class="row m-1 justify-content-center align-items-center">
+        <div class="col-6 alert alert-danger p-1">
+            @ViewBag.MessageError
+        </div>
+    </div>
+}
+
+
+
+<form asp-controller="Classement" asp-action="SubmitFormClassement" method="post">
+    <div class="form-group">
+        <label for="Titre">Titre :</label>
+        <input type="text" name="Title" class="form-control" asp-for="@Model.Title" id="Titre" aria-describedby="Titre" placeholder="Titre de la thématique">
+    </div>
+
+    <button type="submit" class="btn btn-primary col">Ajouter</button>
+</form>

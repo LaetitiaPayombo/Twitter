@@ -1,0 +1,37 @@
+﻿@model List<Tweeto>
+
+<div class="container">
+    @if (ViewBag.Message != null)
+    {
+        <div class="row m-1 justify-content-center align-items-center">
+            <div class="col-6 alert alert-success p-1">
+                @ViewBag.message
+            </div>
+        </div>
+    }
+    @if (Model.Count > 0)
+    {
+        <div class="row">
+            @foreach (Tweeto t in Model)
+            {
+                <a asp-controller="Tweeto" asp-action="Detail" asp-route-id="@t.Id" class="col-3 p-1">
+                    <div class="row justify-content-center m-1">
+                        <img src="~/@t.Images[0].Url" class="col" />
+                    </div>
+                    <div class="row justify-content-center m-1">
+                        <span>@t.Title</span>
+                    </div>
+                    
+                </a>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="row m-1 justify-content-center align-items-center">
+            <div class="col-6 alert alert-danger p-1">
+                Aucun commentaire trouvé
+            </div>
+        </div>
+    }
+</div>
