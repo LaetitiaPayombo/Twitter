@@ -19,7 +19,8 @@
                     <Label Content="Image : " MinWidth="100"></Label>
                     <TextBox MinWidth="400" Text="{Binding Image}"></TextBox>
                 </StackPanel>
-                <Button Content="{Binding ContentButtonCom}" Command="{Binding ConfirmCommandCom}"></Button>
+                <Button Content="Valider" Command="{Binding ConfirmCommandCom}"></Button>
+                <Button Content="supprimer" Command="{Binding DeleteCommand}"></Button>
             </StackPanel>
         </GroupBox>
         <GroupBox Header="Liste Commentaires">

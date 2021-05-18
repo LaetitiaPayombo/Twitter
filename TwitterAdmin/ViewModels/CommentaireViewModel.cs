@@ -15,6 +15,8 @@ namespace TwitterAdmin.ViewModels
 
         private Commentaire commentaire;
 
+        private string deleteButton;
+
         private string contentButtonCom;
         public DateTime DateCommentaire { get => Commentaire.DateCommentaire; set => Commentaire.DateCommentaire = value; }
 
@@ -22,10 +24,12 @@ namespace TwitterAdmin.ViewModels
 
         public string Image { get => Commentaire.Image; set => Commentaire.Image = value; }
 
-
+      
 
 
         public ICommand ConfirmCommandCom { get; set; }
+
+        public ICommand DeleteCommand { get; set; }
 
 
         public ObservableCollection<Commentaire> Commentaires { get; set; }
@@ -43,19 +47,21 @@ namespace TwitterAdmin.ViewModels
                     RaisePropertyChanged("Com");
                     RaisePropertyChanged("Image");
                     RaisePropertyChanged("ContentButtonCom");
+                    RaisePropertyChanged("DeleteButton");
 
                 }
             }
         }
 
-
-
         public string ContentButtonCom { get => Commentaire.Id > 0 ? "Modifier" : "Ajouter"; }
+
+        public string DeleteButton { get => Commentaire.Id > 0 ? "Supprimer" : " "; }
 
         public CommentaireViewModel()
         {
             Commentaire = new Commentaire();
             ConfirmCommandCom = new RelayCommand(ActionConfirmCommandCom);
+            DeleteCommand = new RelayCommand(ActionDeleteCommand);
             Commentaires = new ObservableCollection<Commentaire>(Commentaire.GetAll());
         }
 
@@ -84,6 +90,30 @@ namespace TwitterAdmin.ViewModels
                     MessageBox.Show("Erreur ajout Commentaire");
                 }
             }
+        }
+
+
+        private void ActionDeleteCommand()
+        {
+            if (Commentaire.Id > 0)
+            {
+
+
+                if (Commentaire.Delete())
+                {
+                    MessageBox.Show("Commentaire supprimé avec l'id " + Commentaire.Id);
+                    Commentaires.Remove(Commentaire);
+                    Commentaire = new Commentaire();
+                    //Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur suppression commentaire");
+                }
+
+            }
+
+
         }
     }
 }

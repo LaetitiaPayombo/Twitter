@@ -15,12 +15,16 @@ namespace TwitterAdmin.ViewModels
 
         private Thematique thematique;
 
+        private string deleteButton;
+
         private string contentButtonThem;
 
         public string Sujet { get => Thematique.Sujet; set => Thematique.Sujet = value; }
 
 
         public ICommand ConfirmCommandThem { get; set; }
+
+        public ICommand DeleteCommand { get; set; }
 
         public ObservableCollection<Thematique> Thematiques { get; set; }
 
@@ -34,6 +38,7 @@ namespace TwitterAdmin.ViewModels
                 {
                     RaisePropertyChanged("Sujet");
                     RaisePropertyChanged("ContentButtonThem");
+                    RaisePropertyChanged("DeleteButton");
 
                 }
             }
@@ -45,6 +50,7 @@ namespace TwitterAdmin.ViewModels
         {
             Thematique = new Thematique();
             ConfirmCommandThem = new RelayCommand(ActionConfirmCommandThem);
+            DeleteCommand = new RelayCommand(ActionDeleteCommand);
             Thematiques = new ObservableCollection<Thematique>(Thematique.GetAll());
         }
 
@@ -75,6 +81,29 @@ namespace TwitterAdmin.ViewModels
             }
         }
 
+
+        private void ActionDeleteCommand()
+        {
+            if (Thematique.Id > 0)
+            {
+
+
+                if (Thematique.Delete())
+                {
+                    MessageBox.Show("Thématique supprimé avec l'id " + Thematique.Id);
+                    Thematiques.Remove(Thematique);
+                    Thematique = new Thematique();
+                    //Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur suppression thématique");
+                }
+
+            }
+
+
+        }
 
 
     }

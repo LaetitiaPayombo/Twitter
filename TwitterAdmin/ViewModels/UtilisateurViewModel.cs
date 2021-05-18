@@ -110,7 +110,7 @@ namespace TwitterAdmin.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("Erreur supprssion utilisateur");
+                    MessageBox.Show("Erreur suppression utilisateur");
                 }
              
             }

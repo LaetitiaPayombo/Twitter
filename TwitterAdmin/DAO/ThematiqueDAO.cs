@@ -104,7 +104,7 @@ namespace TwitterAdmin.DAO
 
         public override bool Update(Thematique element)
         {
-            request = "UPDATE thematique set sujet = @sujet,  where id=@id";
+            request = "UPDATE thematique set sujet = @sujet  where id=@id";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@sujet", element.Sujet));

@@ -15,6 +15,7 @@
                 </StackPanel>
 
                 <Button Content="{Binding ContentButtonThem}" Command="{Binding ConfirmCommandThem}"></Button>
+                <Button Content="supprimer" Command="{Binding DeleteCommand}"></Button>
             </StackPanel>
         </GroupBox>
         <GroupBox Header="Liste des Sujets">
