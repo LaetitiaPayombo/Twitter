@@ -1,4 +1,5 @@
-﻿using System;
+﻿using TwitterAdmin.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -13,13 +14,19 @@ using System.Windows.Shapes;
 namespace TwitterAdmin.Views
 {
     /// <summary>
-    /// Logique d'interaction pour SujetsWindow.xaml
+    /// Logique d'interaction pour ThematiquesWindow.xaml
     /// </summary>
-    public partial class SujetsWindow : Window
+    public partial class ThematiquesControl: UserControl
     {
-        public SujetsWindow()
+        public ThematiquesControl()
         {
             InitializeComponent();
+            DataContext = new ThematiqueViewModel();
+        }
+
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
         }
     }
 }

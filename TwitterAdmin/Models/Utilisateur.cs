@@ -2,8 +2,8 @@
 using TwitterAdmin.Tools;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
-using System.ComponentModel;
 using System.Text;
 
 namespace TwitterAdmin.Models
@@ -13,10 +13,12 @@ namespace TwitterAdmin.Models
         private int id;
         private string pseudo;
         private string email;
+        private string avatar;
 
         public int Id { get => id; set => id = value; }
         public string Pseudo { get => pseudo; set => pseudo = value; }
         public string Email { get => email; set => email = value; }
+        public string Avatar { get => avatar; set => avatar = value; }
 
         public bool Save()
         {

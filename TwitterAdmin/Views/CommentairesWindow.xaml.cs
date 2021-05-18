@@ -1,4 +1,5 @@
-﻿using System;
+﻿using TwitterAdmin.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -15,11 +16,17 @@ namespace TwitterAdmin.Views
     /// <summary>
     /// Logique d'interaction pour CommentairesWindow.xaml
     /// </summary>
-    public partial class CommentairesWindow : Window
+    public partial class CommentairesControl : UserControl
     {
-        public CommentairesWindow()
+        public CommentairesControl()
         {
             InitializeComponent();
+            DataContext = new CommentaireViewModel();
+        }
+
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
         }
     }
 }

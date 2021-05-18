@@ -7,27 +7,28 @@ using System.Text;
 
 namespace TwitterAdmin.DAO
 {
-    class UtilisateurDAO : AbstractDAO<Utilisateur>
+    class CommentaireDAO : AbstractDAO<Commentaire>
     {
 
-        public override bool Create(Utilisateur element)
+
+        public override bool Create(Commentaire element)
         {
-            request = "INSERT INTO Utilisateur(pseudo, email, avatar) " +
-                "OUTPUT INSERTED.ID values (@pseudo, @email, @avatar)";
+            request = "INSERT INTO commentaire ( date_commentaire, com, image) " +
+                "values (@date_commentaire, @com, @image)";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
-            command.Parameters.Add(new SqlParameter("@pseudo", element.Pseudo));
-            command.Parameters.Add(new SqlParameter("@email", element.Email));
-            command.Parameters.Add(new SqlParameter("@avatar", element.Avatar));
+            command.Parameters.Add(new SqlParameter("@date_commentaire", element.Com));
+            command.Parameters.Add(new SqlParameter("@com", element.Com));
+            command.Parameters.Add(new SqlParameter("@image", element.Image));
             connection.Open();
             element.Id = (int)command.ExecuteScalar();
             command.Dispose();
             connection.Close();
             return element.Id > 0;
         }
-        public override bool Delete(Utilisateur element)
+        public override bool Delete(Commentaire element)
         {
-            request = "delete from Utilisateur where id=@id";
+            request = "delete from commentaire where id=@id";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@id", element.Id));
@@ -37,10 +38,10 @@ namespace TwitterAdmin.DAO
             connection.Close();
             return nbrLigne > 0;
         }
-        public override Utilisateur Find(int index)
+        public override Commentaire Find(int index)
         {
-            Utilisateur utilisateur = null;
-            request = "SELECT id, pseudo, email, avatar from Utilisateur where id=@id";
+            Commentaire commentaire = null;
+            request = "SELECT id, date_commentaire, com, image from commentaire where id=@id";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@id", index));
@@ -48,79 +49,82 @@ namespace TwitterAdmin.DAO
             reader = command.ExecuteReader();
             if (reader.Read())
             {
-                utilisateur = new Utilisateur
+                commentaire = new Commentaire
                 {
                     Id = index,
-                    Pseudo = reader.GetString(1),
-                    Email = reader.GetString(2),
+                    DateCommentaire = reader.GetDateTime(1),
+                    Com = reader.GetString(2),
+                    Image = reader.GetString(3),
 
                 };
             }
             reader.Close();
             command.Dispose();
             connection.Close();
-            return utilisateur;
+            return commentaire;
         }
 
 
-        public override List<Utilisateur> Find(Func<Utilisateur, bool> criteria)
+        public override List<Commentaire> Find(Func<Commentaire, bool> criteria)
         {
-            List<Utilisateur> utilisateurs = new List<Utilisateur>();
-            FindAll().ForEach(u =>
+            List<Commentaire> commentaires = new List<Commentaire>();
+            FindAll().ForEach(c =>
             {
-                if (criteria(u))
+                if (criteria(c))
                 {
-                    utilisateurs.Add(u);
+                    commentaires.Add(c);
                 }
             });
-            return utilisateurs;
+            return commentaires;
         }
 
 
 
 
-        public override List<Utilisateur> FindAll()
+        public override List<Commentaire> FindAll()
         {
-            List<Utilisateur> utilisateurs = new List<Utilisateur>();
-            request = "SELECT id, pseudo, email, avatar from Utilisateur";
+            List<Commentaire> commentaires = new List<Commentaire>();
+            request = "SELECT id, date_commentaire, com, image from commentaire";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             connection.Open();
             reader = command.ExecuteReader();
             while (reader.Read())
             {
-                Utilisateur u = new Utilisateur
+                Commentaire c = new Commentaire
                 {
                     Id = reader.GetInt32(0),
-                    Pseudo = reader.GetString(1),
-                    Email = reader.GetString(2),
-                    Avatar = reader.GetString(3),
+                    DateCommentaire = reader.GetDateTime(1),
+                    Com = reader.GetString(2),
+                    Image = reader.GetString(3),
 
                 };
-                utilisateurs.Add(u);
+                commentaires.Add(c);
             }
             reader.Close();
             command.Dispose();
             connection.Close();
-            return utilisateurs;
+            return commentaires;
         }
 
 
-        public override bool Update(Utilisateur element)
+        public override bool Update(Commentaire element)
         {
-            request = "UPDATE Utilisateur set pseudo = @pseudo, email = @email, avatar = @avatar where id=@id";
+            request = "UPDATE commentaire set date_commentaire = @date_commentaire, com = @com, image = @image where id=@id";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
-            command.Parameters.Add(new SqlParameter("@pseudo", element.Pseudo));
-            command.Parameters.Add(new SqlParameter("@email", element.Email));
+            command.Parameters.Add(new SqlParameter("@date_commentaire", element.DateCommentaire));
+            command.Parameters.Add(new SqlParameter("com", element.Com));
             command.Parameters.Add(new SqlParameter("@id", element.Id));
-            command.Parameters.Add(new SqlParameter("@avatar", element.Avatar));
+            command.Parameters.Add(new SqlParameter("@image", element.Image));
             connection.Open();
             int nbRow = command.ExecuteNonQuery();
             command.Dispose();
             connection.Close();
             return nbRow == 1;
         }
+
+
 
 
     }

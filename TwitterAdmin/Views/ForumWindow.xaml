@@ -1,12 +1,23 @@
-﻿<Window x:Class="TwitterAdmin.Views.AccueilWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TwitterAdmin.Views"
+        xmlns:local="clr-namespace:TwitterAdmin"
+        xmlns:Views="clr-namespace:TwitterAdmin.Views" xmlns:viewmodels="clr-namespace:TwitterAdmin.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ForumViewModel}" x:Class="TwitterAdmin.ForumWindow"
         mc:Ignorable="d"
-        Title="AccueilWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Gestion Forum" Height="485" Width="800" WindowStyle="ToolWindow" Foreground="{x:Null}">
+    <Window.Effect>
+        <DropShadowEffect/>
+    </Window.Effect>
+
+    <StackPanel>
+        <Menu>
+            <MenuItem Header="Gestion Utilisateurs" Command="{Binding UtilisateursCommand}"/>
+            <MenuItem Header="Gestion Thématiques" Command="{Binding ThematiquesCommand}" />
+            <MenuItem Header="Gestion Commentaires" Command="{Binding CommentairesCommand}" />
+          
+        </Menu>
+    </StackPanel>
+
 </Window>

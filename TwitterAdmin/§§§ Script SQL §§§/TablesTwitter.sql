@@ -9,7 +9,8 @@ CREATE TABLE [dbo].[Utilisateur]
 (
 	[Id] INT IDENTITY (1, 1) NOT NULL, 
     [pseudo] VARCHAR(50) NOT NULL, 
-    [email] VARCHAR(50) NOT NULL, 
+    [email] VARCHAR(50) NOT NULL,
+    [avatar] VARCHAR(MAX) NOT NULL,
     PRIMARY KEY CLUSTERED ([id] ASC)
 )
 
@@ -19,9 +20,10 @@ CREATE TABLE [dbo].[Utilisateur]
  
 CREATE TABLE [dbo].[commentaire]
 (
-	[Id] INT IDENTITY (1, 1) NOT NULL,
-    [dateCommentaire] DATETIME     NOT NULL,
-    [commentaire]      VARCHAR (500) NOT NULL,
+	[id] INT IDENTITY (1, 1) NOT NULL,
+    [date_commentaire] DATETIME     NOT NULL,
+    [com]      VARCHAR (500) NOT NULL,
+    [image] VARCHAR(MAX) NOT NULL,
     PRIMARY KEY CLUSTERED ([id] ASC)
 )
 /*
@@ -29,7 +31,7 @@ CREATE TABLE [dbo].[commentaire]
  */
 CREATE TABLE [dbo].[thematique]
 (
-	[Id] INT IDENTITY (1, 1) NOT NULL,       
+	[id] INT IDENTITY (1, 1) NOT NULL,       
     [sujet]  VARCHAR(100) NOT NULL,
     
     PRIMARY KEY CLUSTERED ([id] ASC)
@@ -39,9 +41,9 @@ CREATE TABLE [dbo].[thematique]
  */
 CREATE TABLE [dbo].[forum]
 (
-	[Id] INT IDENTITY (1, 1) NOT NULL, 
-    [idUser]       INT    NOT NULL,    
-    [idThematique]       INT    NOT NULL,
+	[id] INT IDENTITY (1, 1) NOT NULL, 
+    [id_user]       INT    NOT NULL,    
+    [id_thematique]       INT    NOT NULL,
     PRIMARY KEY CLUSTERED ([id] ASC)
 )
 
