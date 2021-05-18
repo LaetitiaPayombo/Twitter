@@ -15,6 +15,8 @@ namespace TwitterAdmin.ViewModels
 
         private Utilisateur utilisateur;
 
+        private string deleteButton;
+
         private string contentButton;
         public string Pseudo { get => Utilisateur.Pseudo; set => Utilisateur.Pseudo = value; }
 
@@ -24,7 +26,9 @@ namespace TwitterAdmin.ViewModels
 
         public ICommand ConfirmCommand { get; set; }
 
-       
+        public ICommand DeleteCommand { get; set; }
+
+
 
         public ObservableCollection<Utilisateur> Utilisateurs { get; set; }
 
@@ -41,18 +45,24 @@ namespace TwitterAdmin.ViewModels
                     RaisePropertyChanged("Email");
                     RaisePropertyChanged("Avatar");
                     RaisePropertyChanged("ContentButton");
+                    RaisePropertyChanged("DeleteButton");
+
 
                 }
             }
         }
 
+        
         public string ContentButton { get => Utilisateur.Id > 0 ? "Modifier" : "Ajouter"; }
+
+        public string DeleteButton { get => Utilisateur.Id > 0 ?  "Supprimer" : " "; }
 
 
         public UtilisateurViewModel()
         {
             Utilisateur = new Utilisateur();
             ConfirmCommand = new RelayCommand(ActionConfirmCommand);
+            DeleteCommand = new RelayCommand(ActionDeleteCommand);
             Utilisateurs = new ObservableCollection<Utilisateur>(Utilisateur.GetAll());
         }
 
@@ -84,13 +94,31 @@ namespace TwitterAdmin.ViewModels
             }
         }
 
-        //private void Clear()
-        //{
-        //    Utilisateur = new Utilisateur();
-        //    RaisePropertyChanged("Pseudo");
-        //    RaisePropertyChanged("Email");
-        //    RaisePropertyChanged("Avatar");
-        //}
+
+        private void ActionDeleteCommand()
+        {
+            if (Utilisateur.Id > 0)
+            {
+
+
+                if (Utilisateur.Delete())
+                {
+                    MessageBox.Show("Utilisateur supprimé avec l'id " + Utilisateur.Id);
+                    Utilisateurs.Remove(Utilisateur);
+                    Utilisateur = new Utilisateur();
+                    //Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur supprssion utilisateur");
+                }
+             
+            }
+
+
+        }
+
+       
 
     }
 }
