@@ -28,7 +28,7 @@
                 <ListView MinHeight="180" SelectedItem="{Binding Commentaire}" ItemsSource="{Binding Commentaires}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="DateCom" Width="170" DisplayMemberBinding="{Binding DateCom}"></GridViewColumn>
+                            <GridViewColumn Header="DateCom" Width="170" DisplayMemberBinding="{Binding DateCommentaire}"></GridViewColumn>
                             <GridViewColumn Header="Com" Width="170" DisplayMemberBinding="{Binding Com}"></GridViewColumn>
                             <GridViewColumn Header="Image" Width="170" DisplayMemberBinding="{Binding Image}"></GridViewColumn>
                         </GridView>

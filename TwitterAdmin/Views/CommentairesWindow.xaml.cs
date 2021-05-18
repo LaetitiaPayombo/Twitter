@@ -16,17 +16,14 @@ namespace TwitterAdmin.Views
     /// <summary>
     /// Logique d'interaction pour CommentairesWindow.xaml
     /// </summary>
-    public partial class CommentairesControl : UserControl
+    public partial class CommentairesWindow : Window
     {
-        public CommentairesControl()
+        public CommentairesWindow()
         {
             InitializeComponent();
             DataContext = new CommentaireViewModel();
         }
 
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }

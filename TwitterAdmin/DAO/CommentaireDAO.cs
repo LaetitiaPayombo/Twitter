@@ -14,7 +14,7 @@ namespace TwitterAdmin.DAO
         public override bool Create(Commentaire element)
         {
             request = "INSERT INTO commentaire ( date_commentaire, com, image) " +
-                "values (@date_commentaire, @com, @image)";
+                "OUTPUT INSERTED.ID values (@date_commentaire, @com, @image)";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@date_commentaire", element.DateCommentaire));
